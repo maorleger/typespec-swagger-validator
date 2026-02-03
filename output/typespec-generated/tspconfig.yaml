@@ -1,0 +1,10 @@
+emit:
+  - "@azure-tools/typespec-ts"
+options:
+  "@azure-tools/typespec-ts":
+    emitter-output-dir: "{output-dir}/src"
+    package-details:
+      name: "generated-client"
+    generate-metadata: false
+    generate-test: false
+    flavor: azure

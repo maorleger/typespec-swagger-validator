@@ -1,0 +1,12 @@
+{
+  "emitterVersion": "0.48.1",
+  "crossLanguageDefinitions": {
+    "CrossLanguagePackageId": "DiscriminatorRepro",
+    "CrossLanguageDefinitionId": {
+      "generated-client!CharFilter:interface": "DiscriminatorRepro.CharFilter",
+      "generated-client!MappingCharFilter:interface": "DiscriminatorRepro.MappingCharFilter",
+      "generated-client!PatternReplaceCharFilter:interface": "DiscriminatorRepro.PatternReplaceCharFilter",
+      "generated-client!DiscriminatorReproClient#getFilter:member(1)": "DiscriminatorRepro.getFilter"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Discriminator Repro",
+    "version": "1.0.0"
+  },
+  "host": "localhost",
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/filters": {
+      "get": {
+        "operationId": "getFilter",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CharFilter"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CharFilter": {
+      "type": "object",
+      "description": "Base type for character filters.",
+      "discriminator": "@odata.type",
+      "required": ["@odata.type", "name"],
+      "properties": {
+        "@odata.type": {
+          "type": "string",
+          "description": "The discriminator for derived types."
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "MappingCharFilter": {
+      "type": "object",
+      "description": "A character filter that applies mappings.",
+      "x-ms-discriminator-value": "#Microsoft.Azure.Search.MappingCharFilter",
+      "allOf": [{ "$ref": "#/definitions/CharFilter" }],
+      "required": ["mappings"],
+      "properties": {
+        "mappings": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "PatternReplaceCharFilter": {
+      "type": "object",
+      "description": "A character filter that replaces characters.",
+      "x-ms-discriminator-value": "#Microsoft.Azure.Search.PatternReplaceCharFilter",
+      "allOf": [{ "$ref": "#/definitions/CharFilter" }],
+      "required": ["pattern"],
+      "properties": {
+        "pattern": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
